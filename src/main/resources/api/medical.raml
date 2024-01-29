@@ -1,0 +1,40 @@
+#%RAML 1.0
+title: medical
+
+baseUri: /api/
+
+types:
+  patient: !include types/patient.raml
+  prescription: !include types/prescription.raml
+
+/patients:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: patient
+            example: !include examples/patient.json
+
+  post:
+    body:
+      application/json:
+        type: patient
+        example: !include examples/patient.json
+
+/prescriptions:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: prescription
+            example: !include examples/prescription.json
+  post:
+    body:
+      application/json:
+        type: prescription
+        example: !include examples/prescription.json
+          
+
+  

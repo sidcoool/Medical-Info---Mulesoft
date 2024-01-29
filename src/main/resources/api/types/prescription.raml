@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+type: array
+items:
+  type: object
+  properties:
+    patientID:
+      type: number
+      required: true
+    dosage:
+      type: string
+      required: true
+      maxLength: 50
+    daySupply:
+      type: number
+      required: true
+    medication:
+      type: string
+      maxLength: 100
+      required: true
+    frequency:
+      type: string
+      maxLength: 100
+      required: true
+  

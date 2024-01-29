@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="fee6e39a-e1e5-4522-9503-917f8fd7b345" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<ee:object-store-caching-strategy name="Caching_Strategy" doc:name="Caching Strategy" doc:id="e5798a9c-ccaa-4aed-bf7a-b80c3b256b76"/>
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="516ce60b-ff09-402b-b20a-28f5a759e053" >
+		<db:generic-connection url="jdbc:postgresql://rain.db.elephantsql.com:5432/oovtufpk" driverClassName="org.postgresql.Driver" user="oovtufpk" password="oWu9swQV43qcYa3goPaaCfpI3A_3-5tF" />
+	</db:config>
+	
+	
+	</mule>

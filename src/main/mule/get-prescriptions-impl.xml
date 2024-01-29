@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:oauth2-provider="http://www.mulesoft.org/schema/mule/oauth2-provider"
+	xmlns:oauth="http://www.mulesoft.org/schema/mule/oauth"
+	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/oauth http://www.mulesoft.org/schema/mule/oauth/current/mule-oauth.xsd
+http://www.mulesoft.org/schema/mule/oauth2-provider http://www.mulesoft.org/schema/mule/oauth2-provider/current/mule-oauth2-provider.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<flow name="get-prescriptions-impl" doc:id="e7931bdd-6ce1-4268-9a64-7a0ca8a7a73e" >
+		<logger level="INFO" doc:name="Logger" doc:id="1ce1f938-9a12-4f2f-9c8a-584939d555a9" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="1465832f-c027-4f37-b7ad-c81e91697d37" message="inside caching scope " />
+		<db:select doc:name="Select" doc:id="c7c3600f-2027-4941-8daa-778608f70a21" config-ref="Database_Config">
+			<db:sql><![CDATA[SELECT * FROM "public"."prescriptions" LIMIT 100]]></db:sql>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="c1004183-17d1-40f7-9cb2-4946c01eddb2" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
