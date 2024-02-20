@@ -22,7 +22,7 @@ http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/cu
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-payload]]></ee:set-payload>
+["success":"true"] ++ payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
