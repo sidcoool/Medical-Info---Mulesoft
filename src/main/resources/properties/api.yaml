@@ -1,0 +1,4 @@
+postgresql:
+  url: "jdbc:postgresql://rain.db.elephantsql.com:5432/oovtufpk"
+  user: "oovtufpk"
+  password: "![4Xs3mmPQ2BiOSK4BK/gJAuOx7Y4hFjWlqsOtoi8YH7QKmAmOOT27Y5xuGyVbj9v/]"

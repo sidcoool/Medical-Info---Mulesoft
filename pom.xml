@@ -13,9 +13,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.5.1</app.runtime>
 		<app.name>Medical-Info---Mulesoft</app.name>
-		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
+		<app.runtime>4.4.0</app.runtime>
+		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
 	</properties>
 
 	<build>
@@ -38,6 +38,9 @@
 						<password>${anypoint.password}</password>
 						<applicationName>${app.name}</applicationName>
 						<environment>${env}</environment>
+						<properties>
+							<encryption.key>${encryption.key}</encryption.key>
+						</properties>
 					</cloudHubDeployment>
 					<sharedLibraries>
 						<sharedLibrary>
@@ -109,6 +112,12 @@
 			<groupId>org.mule.modules</groupId>
 			<artifactId>mule-apikit-module</artifactId>
 			<version>1.9.2</version>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.modules</groupId>
+			<artifactId>mule-secure-configuration-property-module</artifactId>
+			<version>1.2.6</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>

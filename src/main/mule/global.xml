@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:db="http://www.mulesoft.org/schema/mule/db"
+<mule xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db"
 	xmlns:http="http://www.mulesoft.org/schema/mule/http"
-	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
-	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd 
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
-http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
 	
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="fee6e39a-e1e5-4522-9503-917f8fd7b345" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<ee:object-store-caching-strategy name="Caching_Strategy" doc:name="Caching Strategy" doc:id="e5798a9c-ccaa-4aed-bf7a-b80c3b256b76"/>
 	<db:config name="Database_Config" doc:name="Database Config" doc:id="516ce60b-ff09-402b-b20a-28f5a759e053" >
-		<db:generic-connection url="jdbc:postgresql://rain.db.elephantsql.com:5432/oovtufpk" driverClassName="org.postgresql.Driver" user="oovtufpk" password="oWu9swQV43qcYa3goPaaCfpI3A_3-5tF" />
+		<db:generic-connection url="${secure::postgresql.url}" driverClassName="org.postgresql.Driver" user="${secure::postgresql.user}" password="${secure::postgresql.password}" />
 	</db:config>
+	<configuration-properties doc:name="Configuration properties" doc:id="d38c75ec-fcb6-4bc4-8f2f-fba87581eb19" file="properties\api.yaml" />
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="b9f97a51-1ef7-4b1d-bb1f-0e40f6948594" file="properties\api.yaml" key="${encryption.key}" />
 	
 	
 	</mule>
