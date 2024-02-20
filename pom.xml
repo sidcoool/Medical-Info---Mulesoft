@@ -14,7 +14,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.name>Medical-Info---Mulesoft</app.name>
-		<app.runtime>4.4.0</app.runtime>
+		<app.runtime>4.5.1</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
 	</properties>
 
